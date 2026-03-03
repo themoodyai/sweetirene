@@ -17,7 +17,7 @@ export default function Header({ simplified = false }) {
                 <header className="main-header" style={{ justifyContent: 'center' }}>
                     <div className="logo-container" style={{ order: 0, flex: 'none' }}>
                         <Image
-                            src="/images/logo.png"
+                            src="/images/logo_transparent.png"
                             alt="Sweet Irene's Boutique"
                             className="logo-image"
                             width={200}

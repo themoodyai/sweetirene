@@ -1,6 +1,7 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ProductCard from '@/components/ProductCard';
+import NewsletterForm from '@/components/NewsletterForm';
 import Image from 'next/image';
 import { Star } from '@phosphor-icons/react/dist/ssr';
 
@@ -117,10 +118,7 @@ export default function HomePage() {
             <section className="newsletter">
                 <div className="newsletter-content">
                     <h2>Join Our List for 10% Off</h2>
-                    <form className="newsletter-form">
-                        <input type="email" placeholder="Enter your email address" required />
-                        <button type="submit" className="btn-primary">Subscribe</button>
-                    </form>
+                    <NewsletterForm />
                 </div>
             </section>
 

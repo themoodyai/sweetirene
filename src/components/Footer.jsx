@@ -8,7 +8,7 @@ export default function Footer({ simplified = false }) {
             <div className="footer-grid">
                 <div className="footer-col brand-col">
                     <Image
-                        src="/images/footer_logo.png"
+                        src="/images/footer_logo_transparent.png"
                         alt="Sweet Irene's BOUTIQUE"
                         className="footer-logo"
                         width={200}
