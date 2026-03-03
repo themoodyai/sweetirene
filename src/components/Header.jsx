@@ -20,9 +20,10 @@ export default function Header({ simplified = false }) {
                             src="/images/logo_transparent.png"
                             alt="Sweet Irene's Boutique"
                             className="logo-image"
-                            width={200}
-                            height={80}
+                            width={500}
+                            height={500}
                             priority
+                            style={{ width: 'auto', height: '100%' }}
                         />
                     </div>
                 </header>
@@ -49,9 +50,10 @@ export default function Header({ simplified = false }) {
                             src="/images/logo_transparent.png"
                             alt="Sweet Irene's Boutique"
                             className="logo-image"
-                            width={200}
-                            height={80}
+                            width={500}
+                            height={500}
                             priority
+                            style={{ width: 'auto', height: '100%' }}
                         />
                     </Link>
                 </div>

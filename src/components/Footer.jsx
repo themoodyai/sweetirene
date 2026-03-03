@@ -11,8 +11,9 @@ export default function Footer({ simplified = false }) {
                         src="/images/logo_transparent.png"
                         alt="Sweet Irene's BOUTIQUE"
                         className="footer-logo"
-                        width={200}
-                        height={100}
+                        width={300}
+                        height={300}
+                        style={{ width: 'auto', height: '100%' }}
                     />
                     <p>
                         Curating hand-picked treasures for your family and home, with a
