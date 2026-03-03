@@ -1,66 +1,107 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
 
-export default function Home() {
+import { useState } from 'react';
+import Image from 'next/image';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+
+export default function ComingSoonPage() {
+  const [formState, setFormState] = useState('idle'); // idle | submitting | success | error
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormState('submitting');
+
+    const WEBHOOK_URL =
+      'https://services.leadconnectorhq.com/hooks/q0NEtcQnfHz7UlhfCKpp/webhook-trigger/82f85a20-59f0-4d75-843c-8323996697e7';
+
+    try {
+      const response = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName: name,
+          email: email,
+          source: 'Coming Soon Page',
+          tags: ['newsletter-subscriber', 'pre-launch'],
+        }),
+      });
+
+      if (response.ok || response.type === 'opaque') {
+        setFormState('success');
+      } else {
+        throw new Error('Network response was not ok');
+      }
+    } catch (error) {
+      console.error('Error submitting to webhook:', error);
+      setFormState('error');
+    }
+  };
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.js file.</h1>
+    <>
+      <Header simplified />
+
+      <section
+        className="hero-section coming-soon-hero"
+        style={{ backgroundImage: "url('/images/hero.jpeg')" }}
+      >
+        <div className="coming-soon-overlay" />
+
+        <div className="coming-soon-card hero-content">
+          <h1>We&apos;re Launching Soon.</h1>
           <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
+            We are curating hand-picked treasures for you, your little one, and
+            your home. Join our VIP list to be notified the moment our doors
+            open, and receive an exclusive 10% off your first order!
           </p>
+
+          {formState !== 'success' && (
+            <form className="coming-soon-form" onSubmit={handleSubmit}>
+              <input
+                type="text"
+                placeholder="Your First Name"
+                required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <input
+                type="email"
+                placeholder="Your Email Address"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <button
+                type="submit"
+                className="btn-primary"
+                disabled={formState === 'submitting'}
+                style={{
+                  opacity: formState === 'submitting' ? 0.7 : 1,
+                }}
+              >
+                {formState === 'submitting' ? 'Subscribing...' : 'Notify Me'}
+              </button>
+            </form>
+          )}
+
+          {formState === 'success' && (
+            <p className="form-success-msg">
+              Thanks! You&apos;re on the list. We&apos;ll see you soon!
+            </p>
+          )}
+
+          {formState === 'error' && (
+            <p className="form-error-msg">
+              Something went wrong. Please try again.
+            </p>
+          )}
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </section>
+
+      <Footer simplified />
+    </>
   );
 }
