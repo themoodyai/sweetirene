@@ -177,7 +177,7 @@ p {
 }
 
 .logo-image {
-    max-height: 130px;
+    max-height: 250px;
     object-fit: contain;
     mix-blend-mode: multiply;
 }
@@ -484,7 +484,7 @@ p {
 }
 
 .footer-logo {
-    max-height: 150px;
+    max-height: 250px;
     object-fit: contain;
     mix-blend-mode: multiply;
     margin-bottom: 20px;
