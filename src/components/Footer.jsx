@@ -43,7 +43,7 @@ export default function Footer({ simplified = false }) {
                         </div>
                         <div className="footer-col">
                             <h4>Company</h4>
-                            <Link href="#">Our Story</Link>
+                            <Link href="/our-story">Our Story</Link>
                             <Link href="#">Contact Us</Link>
                             <Link href="#">FAQ</Link>
                         </div>

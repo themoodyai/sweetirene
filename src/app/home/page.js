@@ -1,6 +1,6 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import ProductCard from '@/components/ProductCard';
+import FeaturedCollection from '@/components/FeaturedCollection';
 import NewsletterForm from '@/components/NewsletterForm';
 import Image from 'next/image';
 import { Star } from '@phosphor-icons/react/dist/ssr';
@@ -17,10 +17,38 @@ const categories = [
 ];
 
 const products = [
-    { img: '/images/prod_romper.png', alt: 'Organic Cotton Romper', title: 'Organic Cotton Romper', price: '$42.00' },
-    { img: '/images/prod_dress.png', alt: 'Linen Midi Dress', title: 'Linen Midi Dress', price: '$85.00' },
-    { img: '/images/prod_vase.png', alt: 'Ceramic Artisan Vase', title: 'Ceramic Artisan Vase', price: '$54.00' },
-    { img: '/images/prod_basket.png', alt: 'Woven Moses Basket', title: 'Woven Moses Basket', price: '$120.00' },
+    {
+        img: '/images/prod_romper.png',
+        alt: 'Organic Cotton Romper',
+        title: 'Organic Cotton Romper',
+        price: '$42.00',
+        description:
+            'Crafted from 100% certified organic cotton, this buttery-soft romper is gentle on delicate skin and built to move with your little one. Available in timeless neutral tones, it pairs beautifully with everything in a growing wardrobe.',
+    },
+    {
+        img: '/images/prod_dress.png',
+        alt: 'Linen Midi Dress',
+        title: 'Linen Midi Dress',
+        price: '$85.00',
+        description:
+            'An effortless everyday dress in breathable linen. The relaxed midi silhouette flows beautifully and transitions from morning errands to an evening out. A piece you will reach for again and again.',
+    },
+    {
+        img: '/images/prod_vase.png',
+        alt: 'Ceramic Artisan Vase',
+        title: 'Ceramic Artisan Vase',
+        price: '$54.00',
+        description:
+            'Hand-thrown by local artisans, each of these ceramic vases carries subtle variations that make it uniquely yours. Its warm, organic form brings a grounding presence to any shelf, mantle, or tabletop.',
+    },
+    {
+        img: '/images/prod_basket.png',
+        alt: 'Woven Moses Basket',
+        title: 'Woven Moses Basket',
+        price: '$120.00',
+        description:
+            'A timeless heirloom piece, hand-woven from natural seagrass. Beautifully functional as a baby bassinet or a stylish storage solution, this basket brings warmth and texture to any nursery or living space.',
+    },
 ];
 
 export default function HomePage() {
@@ -28,23 +56,20 @@ export default function HomePage() {
         <>
             <Header />
 
-            {/* Hero Section (Split Layout) */}
-            <section className="hero-section">
-                <div className="hero-container">
-                    <div className="hero-content">
-                        <h1>Curated Goods for You, Your Little One, &amp; Your Home.</h1>
-                        <a href="#shop" className="btn-primary">Shop New Arrivals</a>
-                    </div>
-                    <div className="hero-image-box">
-                        <Image
-                            src="/images/hero.jpeg"
-                            alt="Mother and Baby"
-                            fill
-                            sizes="60vw"
-                            style={{ objectFit: 'cover', objectPosition: 'center' }}
-                            priority
-                        />
-                    </div>
+            {/* Hero Section */}
+            <section className="hero-section hero-centered">
+                <Image
+                    src="/images/hero.jpeg"
+                    alt="Sweet Irene's Boutique"
+                    fill
+                    sizes="100vw"
+                    style={{ objectFit: 'cover', objectPosition: 'center' }}
+                    priority
+                />
+                <div className="hero-overlay" />
+                <div className="hero-centered-content">
+                    <h1>Curated Goods for You, Your Little One, &amp; Your Home.</h1>
+                    <a href="#shop" className="btn-primary">Shop New Arrivals</a>
                 </div>
             </section>
 
@@ -78,24 +103,14 @@ export default function HomePage() {
                         high-quality treasures, thoughtfully curated for mindful living and
                         effortless style.
                     </p>
-                    <a href="#story" className="link-subtle">Read Our Story</a>
+                    <a href="/our-story" className="link-subtle">Read Our Story</a>
                 </div>
             </section>
 
             {/* Featured Collection */}
-            <section className="featured-collection">
+            <section className="featured-collection" id="shop">
                 <h2>Our New Favorites</h2>
-                <div className="product-grid">
-                    {products.map((product) => (
-                        <ProductCard
-                            key={product.title}
-                            imageSrc={product.img}
-                            imageAlt={product.alt}
-                            title={product.title}
-                            price={product.price}
-                        />
-                    ))}
-                </div>
+                <FeaturedCollection products={products} />
             </section>
 
             {/* Testimonials */}

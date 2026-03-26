@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 export default function NewsletterForm() {
     const [formState, setFormState] = useState('idle'); // idle | submitting | success | error
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
 
     const handleSubmit = async (e) => {
@@ -18,6 +19,7 @@ export default function NewsletterForm() {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
+                    firstName: name,
                     email: email,
                     source: 'Home Page Newsletter',
                     tags: ['newsletter-subscriber'],
@@ -46,8 +48,15 @@ export default function NewsletterForm() {
     return (
         <form className="newsletter-form" onSubmit={handleSubmit}>
             <input
+                type="text"
+                placeholder="Your First Name"
+                required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+            />
+            <input
                 type="email"
-                placeholder="Enter your email address"
+                placeholder="Your Email Address"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -56,14 +65,12 @@ export default function NewsletterForm() {
                 type="submit"
                 className="btn-primary"
                 disabled={formState === 'submitting'}
-                style={{
-                    opacity: formState === 'submitting' ? 0.7 : 1,
-                }}
+                style={{ opacity: formState === 'submitting' ? 0.7 : 1 }}
             >
                 {formState === 'submitting' ? 'Subscribing...' : 'Subscribe'}
             </button>
             {formState === 'error' && (
-                <p className="form-error-msg" style={{ marginTop: '10px' }}>
+                <p className="form-error-msg">
                     Something went wrong. Please try again.
                 </p>
             )}

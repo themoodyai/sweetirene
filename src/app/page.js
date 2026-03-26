@@ -98,6 +98,14 @@ export default function ComingSoonPage() {
               Something went wrong. Please try again.
             </p>
           )}
+
+          <div className="coming-soon-categories">
+            <a href="/home#womens">Women&apos;s</a>
+            <span>·</span>
+            <a href="/home#baby">Baby</a>
+            <span>·</span>
+            <a href="/home#home">Home &amp; Decor</a>
+          </div>
         </div>
       </section>
 
