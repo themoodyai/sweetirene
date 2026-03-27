@@ -63,7 +63,7 @@ export default function HomePage() {
                     alt="Sweet Irene's Boutique"
                     fill
                     sizes="100vw"
-                    style={{ objectFit: 'cover', objectPosition: 'center' }}
+                    style={{ objectFit: 'cover', objectPosition: 'center top' }}
                     priority
                 />
                 <div className="hero-overlay" />

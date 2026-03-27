@@ -544,7 +544,7 @@ p {
     text-align: center;
     height: 75vh;
     background-size: cover;
-    background-position: center;
+    background-position: center top;
 }
 
 .coming-soon-overlay {
@@ -721,52 +721,134 @@ p {
     color: var(--color-sage);
 }
 
-/* Our Story Page */
-.our-story-bio {
-    padding: 80px 5%;
+/* Our Story Page — split sections */
+.story-split {
+    position: relative;
+    width: 100%;
+    max-width: 1600px;
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
     background-color: var(--color-ivory);
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.our-story-section {
-    padding: 80px 5%;
+.story-split-alt {
     background-color: #F2F1EC;
 }
 
-.our-story-container {
-    max-width: 1100px;
-    margin: 0 auto;
+.story-split-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
 }
 
-.our-story-bio-layout,
-.our-story-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
+.story-split-gradient-right {
+    background: linear-gradient(
+        to right,
+        transparent 0%,
+        transparent 48%,
+        rgba(249, 248, 243, 0.6) 56%,
+        rgba(249, 248, 243, 0.95) 62%,
+        var(--color-ivory) 67%
+    );
 }
 
-.our-story-bio-img,
-.our-story-img {
+.story-split-gradient-left {
+    background: linear-gradient(
+        to left,
+        transparent 0%,
+        transparent 48%,
+        rgba(242, 241, 236, 0.6) 56%,
+        rgba(242, 241, 236, 0.95) 62%,
+        #F2F1EC 67%
+    );
+}
+
+.story-split-content {
     position: relative;
-    aspect-ratio: 3/4;
-    overflow: hidden;
-    background-color: var(--color-ivory);
+    z-index: 2;
+    width: 42%;
+    max-width: 600px;
+    min-width: 320px;
+    padding: 80px 48px;
 }
 
-.our-story-bio-img img,
-.our-story-img img {
-    mix-blend-mode: multiply;
+.story-split-content-right {
+    margin-left: auto;
 }
 
-.our-story-bio-text p,
-.our-story-text p {
+.story-split-content-left {
+    margin-right: auto;
+}
+
+.story-split-content h2 {
+    text-align: left !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.story-split-content p {
     font-size: 1.05rem !important;
     line-height: 1.8 !important;
+    margin-top: 16px !important;
 }
 
-.our-story-bio-text h2,
-.our-story-text h2 {
-    text-align: left !important;
+.story-split-content p:first-of-type {
+    margin-top: 0 !important;
+}
+
+@media (max-width: 900px) {
+    .story-split {
+        display: block;
+        min-height: 0;
+        /* create space for the image above the text */
+        padding-top: 68vw;
+    }
+
+    /* wash gradient fades image top-to-bottom into the text background */
+    .story-split-gradient-right,
+    .story-split-gradient-left {
+        background: linear-gradient(
+            to bottom,
+            rgba(249, 248, 243, 0.08) 0%,
+            rgba(249, 248, 243, 0.08) 45%,
+            rgba(249, 248, 243, 0.75) 62%,
+            var(--color-ivory) 75%
+        );
+    }
+
+    .story-split-alt .story-split-gradient-right,
+    .story-split-alt .story-split-gradient-left {
+        background: linear-gradient(
+            to bottom,
+            rgba(242, 241, 236, 0.08) 0%,
+            rgba(242, 241, 236, 0.08) 45%,
+            rgba(242, 241, 236, 0.75) 62%,
+            #F2F1EC 75%
+        );
+    }
+
+    .story-split-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        margin: 0;
+        padding: 40px 24px 64px;
+        /* solid background so text sits cleanly below the image */
+        background-color: var(--color-ivory);
+    }
+
+    .story-split-alt .story-split-content {
+        background-color: #F2F1EC;
+    }
 }
 
 /* Responsive adjustments */
@@ -825,20 +907,6 @@ p {
 
     .hero-centered-content h1 {
         font-size: 2.8rem !important;
-    }
-
-    .our-story-bio-layout,
-    .our-story-layout {
-        grid-template-columns: 1fr;
-    }
-
-    .our-story-bio-img {
-        aspect-ratio: 4/3;
-    }
-
-    .our-story-img {
-        aspect-ratio: 4/3;
-        order: -1;
     }
 
     .modal-card {
