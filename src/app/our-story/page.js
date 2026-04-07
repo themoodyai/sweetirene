@@ -15,15 +15,17 @@ export default function OurStoryPage() {
 
             {/* Meet Melissa — full-width image left, text right */}
             <section className="story-split">
-                <Image
-                    src="/images/melissa-portrait.png"
-                    alt="Melissa Moody, founder of Sweet Irene's Boutique"
-                    fill
-                    sizes="100vw"
-                    style={{ objectFit: 'cover', objectPosition: 'left top', filter: 'grayscale(1)' }}
-                    priority
-                />
-                <div className="story-split-gradient story-split-gradient-right" />
+                <div className="story-split-image">
+                    <Image
+                        src="/images/melissa-portrait.png"
+                        alt="Melissa Moody, founder of Sweet Irene's Boutique"
+                        fill
+                        sizes="100vw"
+                        style={{ objectFit: 'cover', objectPosition: 'left top', filter: 'grayscale(1)' }}
+                        priority
+                    />
+                    <div className="story-split-gradient story-split-gradient-right" />
+                </div>
                 <div className="story-split-content story-split-content-right">
                     <h2>Meet Melissa Moody</h2>
                     <p>
@@ -47,14 +49,16 @@ export default function OurStoryPage() {
 
             {/* How It All Began — text left, full-width image right */}
             <section className="story-split story-split-alt">
-                <Image
-                    src="/images/melissa-story-2.png"
-                    alt="Melissa Moody at Sweet Irene's Boutique"
-                    fill
-                    sizes="100vw"
-                    style={{ objectFit: 'cover', objectPosition: 'right top', filter: 'grayscale(1)' }}
-                />
-                <div className="story-split-gradient story-split-gradient-left" />
+                <div className="story-split-image">
+                    <Image
+                        src="/images/melissa-story-2.png"
+                        alt="Melissa Moody at Sweet Irene's Boutique"
+                        fill
+                        sizes="100vw"
+                        style={{ objectFit: 'cover', objectPosition: 'right top', filter: 'grayscale(1)' }}
+                    />
+                    <div className="story-split-gradient story-split-gradient-left" />
+                </div>
                 <div className="story-split-content story-split-content-left">
                     <h2>How It All Began</h2>
                     <p>
