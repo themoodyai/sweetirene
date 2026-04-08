@@ -46,9 +46,9 @@ export default function Header({ simplified = false }) {
                     </div>
 
                     <nav className={`nav-middle ${menuOpen ? 'active' : ''}`}>
-                        <a href="#womens">Women&apos;s</a>
-                        <a href="#baby">Baby</a>
-                        <a href="#home">Home &amp; Decor</a>
+                        <Link href="/shop/womens">Women&apos;s</Link>
+                        <Link href="/shop/baby">Baby</Link>
+                        <Link href="/shop/home">Home &amp; Decor</Link>
                     </nav>
 
                     <nav className="nav-right">

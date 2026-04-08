@@ -969,3 +969,701 @@ p {
         font-size: 1.4rem;
     }
 }
+
+/* ========================================
+   Shop Page — /shop
+   ======================================== */
+
+/* Breadcrumb */
+.breadcrumb {
+    padding: 20px 5%;
+    border-bottom: 1px solid rgba(143, 156, 134, 0.2);
+}
+
+.breadcrumb-list {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.breadcrumb-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.breadcrumb-link {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--color-charcoal);
+    opacity: 0.55;
+    transition: opacity 0.2s ease;
+}
+
+.breadcrumb-link:hover {
+    opacity: 1;
+}
+
+.breadcrumb-current {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--color-charcoal);
+}
+
+.breadcrumb-sep {
+    font-size: 0.75rem;
+    color: var(--color-sage);
+    opacity: 0.7;
+}
+
+/* Shop page header */
+.shop-header {
+    padding: 60px 5% 40px;
+    text-align: center;
+}
+
+.shop-heading {
+    font-family: var(--font-heading) !important;
+    font-size: clamp(3rem, 8vw, 7rem) !important;
+    font-weight: 300 !important;
+    line-height: 1 !important;
+    letter-spacing: -0.02em !important;
+    color: var(--color-charcoal) !important;
+    margin-bottom: 20px !important;
+}
+
+.shop-subheading {
+    font-family: var(--font-body) !important;
+    font-size: 0.75rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 4px !important;
+    color: var(--color-sage) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.shop-subheading::before,
+.shop-subheading::after {
+    content: '';
+    display: inline-block;
+    width: 48px;
+    height: 1px;
+    background-color: var(--color-sage);
+}
+
+/* Category pill tabs */
+.category-pills-wrapper {
+    padding: 0 5% 40px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.category-pills-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.category-pills {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.category-pill {
+    padding: 8px 28px;
+    border: 1px solid rgba(143, 156, 134, 0.5);
+    background: transparent;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--color-charcoal);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+}
+
+.category-pill:hover {
+    border-color: var(--color-charcoal);
+}
+
+.category-pill--active {
+    background-color: var(--color-charcoal);
+    border-color: var(--color-charcoal);
+    color: var(--color-ivory);
+}
+
+/* Shop layout: sidebar + main */
+.shop-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 60px;
+    padding: 0 5% 100px;
+    max-width: 1600px;
+    margin: 0 auto;
+    align-items: start;
+}
+
+/* Filter Sidebar */
+.filter-sidebar {
+    position: sticky;
+    top: 90px;
+}
+
+.filter-section {
+    padding-bottom: 32px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid rgba(143, 156, 134, 0.2);
+}
+
+.filter-section:last-of-type {
+    border-bottom: none;
+}
+
+.filter-section--muted {
+    opacity: 0.4;
+}
+
+.filter-section-title {
+    font-family: var(--font-body) !important;
+    font-size: 0.7rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    color: var(--color-charcoal) !important;
+    margin-bottom: 16px !important;
+}
+
+.filter-category-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filter-category-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--color-charcoal);
+    opacity: 0.6;
+    cursor: pointer;
+    text-align: left;
+    transition: opacity 0.2s ease;
+}
+
+.filter-category-btn:hover {
+    opacity: 1;
+}
+
+.filter-category-btn--active {
+    opacity: 1;
+    font-weight: 600;
+    position: relative;
+    padding-left: 12px;
+}
+
+.filter-category-btn--active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    background-color: var(--color-sage);
+    border-radius: 50%;
+}
+
+.filter-coming-soon {
+    font-size: 0.8rem !important;
+    font-style: italic;
+    opacity: 0.7;
+}
+
+.filter-clear-btn {
+    background: none;
+    border: none;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--color-charcoal);
+    opacity: 0.5;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 8px;
+    transition: opacity 0.2s ease;
+}
+
+.filter-clear-btn:hover {
+    opacity: 1;
+}
+
+/* Shop main area */
+.shop-main {
+    min-width: 0;
+}
+
+/* Sort bar */
+.sort-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid rgba(143, 156, 134, 0.2);
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.sort-bar-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.sort-bar-count {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--color-charcoal);
+    opacity: 0.5;
+}
+
+.filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border: 1px solid rgba(143, 156, 134, 0.5);
+    background: transparent;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-charcoal);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-chip:hover {
+    border-color: var(--color-charcoal);
+}
+
+.filter-chip-remove {
+    font-size: 1rem;
+    line-height: 1;
+    opacity: 0.6;
+}
+
+.sort-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sort-label {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--color-charcoal);
+    opacity: 0.5;
+}
+
+.sort-select {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(84, 80, 77, 0.3);
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--color-charcoal);
+    cursor: pointer;
+    padding: 4px 0;
+    outline: none;
+    appearance: none;
+    padding-right: 16px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2354504D' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0 center;
+}
+
+/* Shop product card (link-based, vs modal-based on home page) */
+.shop-product-card {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.shop-product-card .product-img-box {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.shop-product-card:hover .img-placeholder {
+    transform: scale(1.03);
+}
+
+.shop-card-hover-bar {
+    position: absolute;
+    bottom: -56px;
+    left: 0;
+    width: 100%;
+    background-color: rgba(249, 248, 243, 0.97);
+    color: var(--color-charcoal);
+    padding: 10px 16px;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-align: center;
+    transition: bottom 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.shop-product-card:hover .shop-card-hover-bar {
+    bottom: 0;
+    opacity: 1;
+}
+
+.shop-card-atc-btn {
+    background: var(--color-charcoal);
+    color: var(--color-ivory);
+    border: none;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    flex: 1;
+}
+
+.shop-card-atc-btn:hover {
+    background: #3b3734;
+}
+
+.shop-card-view-link {
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+    opacity: 0.6;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Product badge (e.g. "New") */
+.product-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 1;
+    background-color: var(--color-sage);
+    color: var(--color-ivory);
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 4px 10px;
+}
+
+/* Empty state */
+.shop-empty {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.shop-empty-text {
+    font-family: var(--font-heading) !important;
+    font-size: 1.6rem !important;
+    font-style: italic;
+    opacity: 0.4;
+    margin-bottom: 24px !important;
+}
+
+/* Shop page responsive */
+@media (max-width: 900px) {
+    .shop-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 0 5% 80px;
+    }
+
+    .filter-sidebar {
+        position: static;
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+        border-top: 1px solid rgba(143, 156, 134, 0.2);
+        padding-top: 24px;
+    }
+
+    .filter-section {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+        flex: 1 1 200px;
+    }
+
+    .filter-section--muted {
+        display: none;
+    }
+
+    .filter-category-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px 20px;
+    }
+
+    .shop-header {
+        padding: 40px 5% 28px;
+    }
+
+    .shop-heading {
+        font-size: clamp(2.4rem, 12vw, 4rem) !important;
+    }
+
+    .category-pills {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 600px) {
+    .shop-layout {
+        padding: 0 5% 60px;
+    }
+
+    .sort-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* ========================================
+   Product Detail Page — /products/[slug]
+   ======================================== */
+
+.pdp-page {
+    background-color: var(--color-ivory);
+}
+
+.shop-breadcrumb-row {
+    border-bottom: 1px solid rgba(143, 156, 134, 0.2);
+}
+
+.pdp-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 60px 5% 100px;
+    align-items: start;
+}
+
+/* Image column */
+.pdp-image-col {
+    position: sticky;
+    top: 90px;
+}
+
+.pdp-image-box {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    background-color: #ede9e2;
+}
+
+.pdp-image-box .product-badge {
+    top: 20px;
+    left: 20px;
+}
+
+/* Details column */
+.pdp-details-col {
+    padding-top: 8px;
+}
+
+.pdp-category-label {
+    font-family: var(--font-body) !important;
+    font-size: 0.7rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 3px !important;
+    color: var(--color-sage) !important;
+    margin-bottom: 12px !important;
+}
+
+.pdp-title {
+    font-family: var(--font-heading) !important;
+    font-size: clamp(2rem, 4vw, 3rem) !important;
+    font-weight: 400 !important;
+    line-height: 1.1 !important;
+    color: var(--color-charcoal) !important;
+    margin-bottom: 0 !important;
+}
+
+.pdp-price {
+    font-family: var(--font-body) !important;
+    font-size: 1.25rem !important;
+    font-weight: 500 !important;
+    color: var(--color-charcoal) !important;
+    margin: 20px 0 28px !important;
+    padding-bottom: 28px !important;
+    border-bottom: 1px solid rgba(143, 156, 134, 0.25) !important;
+}
+
+.pdp-description {
+    font-size: 0.95rem !important;
+    line-height: 1.8 !important;
+    color: var(--color-charcoal) !important;
+    opacity: 0.8;
+    margin-bottom: 0 !important;
+}
+
+/* Options */
+.pdp-options {
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.pdp-option-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pdp-option-label {
+    font-family: var(--font-body) !important;
+    font-size: 0.7rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    color: var(--color-charcoal) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin-bottom: 0 !important;
+}
+
+.pdp-option-selected-value {
+    font-weight: 600;
+    opacity: 0.7;
+    font-size: 0.7rem;
+}
+
+.pdp-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.pdp-pill {
+    padding: 8px 20px;
+    border: 1px solid rgba(143, 156, 134, 0.45);
+    background: transparent;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    letter-spacing: 0.5px;
+    color: var(--color-charcoal);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pdp-pill:hover {
+    border-color: var(--color-charcoal);
+}
+
+.pdp-pill--active {
+    background-color: var(--color-charcoal);
+    border-color: var(--color-charcoal);
+    color: var(--color-ivory);
+}
+
+/* Add to Cart */
+.pdp-add-to-cart {
+    width: 100%;
+    padding: 18px 0;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-top: 4px;
+}
+
+/* Shipping note */
+.pdp-shipping-note {
+    font-family: var(--font-body) !important;
+    font-size: 0.78rem !important;
+    text-align: center !important;
+    color: var(--color-charcoal) !important;
+    opacity: 0.45;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: -8px !important;
+}
+
+/* PDP Responsive */
+@media (max-width: 900px) {
+    .pdp-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 40px 5% 80px;
+    }
+
+    .pdp-image-col {
+        position: static;
+    }
+
+    .pdp-image-box {
+        aspect-ratio: 4/3;
+    }
+
+    .pdp-title {
+        font-size: 2.2rem !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .pdp-layout {
+        padding: 32px 5% 64px;
+        gap: 32px;
+    }
+
+    .pdp-image-box {
+        aspect-ratio: 1/1;
+    }
+
+    .pdp-pills {
+        gap: 6px;
+    }
+
+    .pdp-pill {
+        padding: 7px 14px;
+        font-size: 0.73rem;
+    }
+}

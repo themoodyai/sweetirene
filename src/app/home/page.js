@@ -4,52 +4,28 @@ import FeaturedCollection from '@/components/FeaturedCollection';
 import NewsletterForm from '@/components/NewsletterForm';
 import Image from 'next/image';
 import { Star } from '@phosphor-icons/react/dist/ssr';
+import { categories as allCategories, products as allProducts, formatPrice } from '@/lib/data';
 
 export const metadata = {
     title: "Sweet Irene's Boutique - Home",
     description: "Curated goods for you, your little one, and your home.",
 };
 
-const categories = [
-    { href: '#womens', img: '/images/cat_womens.png', label: "Women's Apparel" },
-    { href: '#baby', img: '/images/cat_baby.png', label: 'Baby & Nursery' },
-    { href: '#home', img: '/images/cat_home.png', label: 'Home & Decor' },
-];
+// Map data-layer categories to the shape the home page needs
+const categories = allCategories.map((cat) => ({
+    href: `/shop/${cat.slug}`,
+    img: cat.img,
+    label: cat.label,
+}));
 
-const products = [
-    {
-        img: '/images/prod_romper.png',
-        alt: 'Organic Cotton Romper',
-        title: 'Organic Cotton Romper',
-        price: '$42.00',
-        description:
-            'Crafted from 100% certified organic cotton, this buttery-soft romper is gentle on delicate skin and built to move with your little one. Available in timeless neutral tones, it pairs beautifully with everything in a growing wardrobe.',
-    },
-    {
-        img: '/images/prod_dress.png',
-        alt: 'Linen Midi Dress',
-        title: 'Linen Midi Dress',
-        price: '$85.00',
-        description:
-            'An effortless everyday dress in breathable linen. The relaxed midi silhouette flows beautifully and transitions from morning errands to an evening out. A piece you will reach for again and again.',
-    },
-    {
-        img: '/images/prod_vase.png',
-        alt: 'Ceramic Artisan Vase',
-        title: 'Ceramic Artisan Vase',
-        price: '$54.00',
-        description:
-            'Hand-thrown by local artisans, each of these ceramic vases carries subtle variations that make it uniquely yours. Its warm, organic form brings a grounding presence to any shelf, mantle, or tabletop.',
-    },
-    {
-        img: '/images/prod_basket.png',
-        alt: 'Woven Moses Basket',
-        title: 'Woven Moses Basket',
-        price: '$120.00',
-        description:
-            'A timeless heirloom piece, hand-woven from natural seagrass. Beautifully functional as a baby bassinet or a stylish storage solution, this basket brings warmth and texture to any nursery or living space.',
-    },
-];
+// Map data-layer products to the shape FeaturedCollection / ProductModal expects
+const products = allProducts.map((p) => ({
+    img: p.img,
+    alt: p.alt,
+    title: p.title,
+    price: formatPrice(p.price),
+    description: p.description,
+}));
 
 export default function HomePage() {
     return (
